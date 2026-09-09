@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Zone — Sports Calculators</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="wordmark" data-nav="home">Play Zone</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-link is-active" data-nav="home">Home</a>
+      <a href="#cricket" class="nav-link" data-nav="cricket">Cricket</a>
+      <a href="#football" class="nav-link" data-nav="football">Football</a>
+      <a href="#basketball" class="nav-link" data-nav="basketball">Basketball</a>
+      <a href="#fitness" class="nav-link" data-nav="fitness">Fitness</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="view">
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Play the numbers.</h1>
+        <p>Pick a sport, drop in your stats, and get the number that matters — batting average, strike rate, shooting percentage, BMI and a dozen more. No sign-up, no app, just the calculator you need.</p>
+        <button class="btn btn-primary" data-nav="cricket">Jump to a sport</button>
+      </div>
+
+      <div class="hero-card" aria-hidden="true">
+        <div class="hero-card-row">
+          <span class="hero-card-name">Hemant kashyap</span>
+          <span class="hero-card-tag"><b>Sample innings</b></span>
+        </div>
+        <div class="hero-card-stats">
+          <div><b>120</b><small>Runs</small></div>
+          <div><b>46</b><small>Balls</small></div>
+          <div><b>130.4</b><small>Strike rate</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sport-list">
+
+      <a href="#cricket" class="sport-row" data-nav="cricket" style="--accent:var(--cricket)">
+        <span class="sport-row-name">Cricket</span>
+        <span class="sport-row-desc">Batting average, strike rate, economy rate, BMI.</span>
+      </a>
+
+      <a href="#football" class="sport-row" data-nav="football" style="--accent:var(--football)">
+        <span class="sport-row-name">Football</span>
+        <span class="sport-row-desc">Sprint pace, pass accuracy, goals per match, BMI.</span>
+      </a>
+
+      <a href="#basketball" class="sport-row" data-nav="basketball" style="--accent:var(--basketball)">
+        <span class="sport-row-name">Basketball</span>
+        <span class="sport-row-desc">Field goal %, free throw %, points per game, BMI.</span>
+      </a>
+
+      <a href="#fitness" class="sport-row" data-nav="fitness" style="--accent:var(--fitness)">
+        <span class="sport-row-name">Fitness</span>
+        <span class="sport-row-desc">BMR, ideal body weight, calorie burn, BMI.</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CRICKET -->
+  <section id="cricket" class="view sport-section" hidden style="--accent:var(--cricket)">
+    <div class="section-head">
+      <h2>Cricket</h2>
+      <p>Four calculators built around a batting and bowling scorecard.</p>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Batting average</h3>
+        <p>Runs scored divided by the number of completed innings.</p>
+      </div>
+      <form class="calc-form" id="form-cricket-avg">
+        <div class="field">
+          <label for="cricket-avg-runs" style="color: black;">Total runs</label>
+          <input type="number" id="cricket-avg-runs" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="cricket-avg-innings" style="color: black;">Innings played</label>
+          <input type="number" id="cricket-avg-innings" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="cricket-avg-notout" style="color: black;">Not outs</label>
+          <input type="number" id="cricket-avg-notout" min="0" step="1" value="0" required>
+        </div>
+        <button type="submit" class="btn btn-accent"  ;" >Calculate</button>
+      </form>
+      <div class="result" id="result-cricket-avg"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Strike rate</h3>
+        <p>Runs scored per hundred balls faced.</p>
+      </div>
+      <form class="calc-form" id="form-cricket-sr">
+        <div class="field">
+          <label for="cricket-sr-runs" style="color: black;">Runs scored</label>
+          <input type="number" id="cricket-sr-runs" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="cricket-sr-balls" style="color: black;">Balls faced</label>
+          <input type="number" id="cricket-sr-balls" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-cricket-sr"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Bowling economy</h3>
+        <p>Runs conceded per over bowled.</p>
+      </div>
+      <form class="calc-form" id="form-cricket-eco">
+        <div class="field">
+          <label for="cricket-eco-runs" style="color: black;">Runs conceded</label>
+          <input type="number"  id="cricket-eco-runs" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="cricket-eco-overs" style="color: black;">Overs bowled</label>
+          <input type="number" id="cricket-eco-overs" min="0.1" style="color: black;" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent" >Calculate</button>
+      </form>
+      <div class="result" id="result-cricket-eco"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>BMI</h3>
+        <p>Body mass index from height and weight.</p>
+      </div>
+      <form class="calc-form" id="form-cricket-bmi">
+        <div class="field">
+          <label for="cricket-bmi-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="cricket-bmi-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="cricket-bmi-height"style="color: black;">Height (cm)</label>
+          <input type="number" id="cricket-bmi-height" min="1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-cricket-bmi"></div>
+    </div>
+
+  </section>
+
+  <!-- FOOTBALL -->
+  <section id="football" class="view sport-section" hidden style="--accent:var(--football)">
+    <div class="section-head">
+      <h2>Football</h2>
+      <p>Pace, passing and scoring numbers for the pitch.</p>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Sprint pace</h3>
+        <p>Speed from a timed run over a known distance.</p>
+      </div>
+      <form class="calc-form" id="form-football-speed">
+        <div class="field">
+          <label for="football-speed-distance" style="color: black;">Distance (m)</label>
+          <input type="number" id="football-speed-distance" min="0.1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="football-speed-time" style="color: black;">Time (sec)</label>
+          <input type="number" id="football-speed-time" min="0.1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-football-speed"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Pass accuracy</h3>
+        <p>Successful passes as a share of passes attempted.</p>
+      </div>
+      <form class="calc-form" id="form-football-pass">
+        <div class="field">
+          <label for="football-pass-success" style="color: black;">Successful passes</label>
+          <input type="number" id="football-pass-success" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="football-pass-total" style="color: black;">Passes attempted</label>
+          <input type="number" id="football-pass-total" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-football-pass"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Goals per match</h3>
+        <p>Goal-scoring rate across a season or tournament.</p>
+      </div>
+      <form class="calc-form" id="form-football-goals">
+        <div class="field">
+          <label for="football-goals-total" style="color: black;">Total goals</label>
+          <input type="number" id="football-goals-total" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="football-goals-matches"style="color: black;"> Matches played</label>
+          <input type="number" id="football-goals-matches" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-football-goals"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>BMI</h3>
+        <p>Body mass index from height and weight.</p>
+      </div>
+      <form class="calc-form" id="form-football-bmi">
+        <div class="field">
+          <label for="football-bmi-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="football-bmi-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="football-bmi-height" style="color: black;">Height (cm)</label>
+          <input type="number" id="football-bmi-height" min="1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-football-bmi"></div>
+    </div>
+
+  </section>
+
+  <!-- BASKETBALL -->
+  <section id="basketball" class="view sport-section" hidden style="--accent:var(--basketball)">
+    <div class="section-head">
+      <h2>Basketball</h2>
+      <p>Shooting and scoring numbers off the box score.</p>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Field goal %</h3>
+        <p>Shots made as a share of shots attempted.</p>
+      </div>
+      <form class="calc-form" id="form-basketball-fg">
+        <div class="field">
+          <label for="basketball-fg-made" style="color: black;">Shots made</label>
+          <input type="number" id="basketball-fg-made" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="basketball-fg-attempt" style="color: black;">Shots attempted</label>
+          <input type="number" id="basketball-fg-attempt" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-basketball-fg"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Free throw %</h3>
+        <p>Free throws made as a share of free throws attempted.</p>
+      </div>
+      <form class="calc-form" id="form-basketball-ft">
+        <div class="field">
+          <label for="basketball-ft-made" style="color: black;">Free throws made</label>
+          <input type="number" id="basketball-ft-made" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="basketball-ft-attempt"style="color: black;">Free throws attempted</label>
+          <input type="number" id="basketball-ft-attempt" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-basketball-ft"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Points per game</h3>
+        <p>Scoring average across games played.</p>
+      </div>
+      <form class="calc-form" id="form-basketball-ppg">
+        <div class="field">
+          <label for="basketball-ppg-points" style="color: black;">Total points</label>
+          <input type="number" id="basketball-ppg-points" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="basketball-ppg-games" style="color: black;">Games played</label>
+          <input type="number" id="basketball-ppg-games" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-basketball-ppg"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>BMI</h3>
+        <p>Body mass index from height and weight.</p>
+      </div>
+      <form class="calc-form" id="form-basketball-bmi">
+        <div class="field">
+          <label for="basketball-bmi-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="basketball-bmi-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="basketball-bmi-height" style="color: black;">Height (cm)</label>
+          <input type="number" id="basketball-bmi-height" min="1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-basketball-bmi"></div>
+    </div>
+
+  </section>
+
+  <!-- FITNESS -->
+  <section id="fitness" class="view sport-section" hidden style="--accent:var(--fitness)">
+    <div class="section-head">
+      <h2>Fitness</h2>
+      <p>General training numbers that apply across every sport.</p>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>BMI</h3>
+        <p>Body mass index from height and weight.</p>
+      </div>
+      <form class="calc-form" id="form-fitness-bmi">
+        <div class="field">
+          <label for="fitness-bmi-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="fitness-bmi-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="fitness-bmi-height" style="color: black;">Height (cm)</label>
+          <input type="number" id="fitness-bmi-height" min="1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-fitness-bmi"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>BMR</h3>
+        <p>Resting energy use per day, Mifflin-St Jeor formula.</p>
+      </div>
+      <form class="calc-form" id="form-fitness-bmr">
+        <div class="field">
+          <label for="fitness-bmr-gender" style="color: black;">Gender</label>
+          <select id="fitness-bmr-gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fitness-bmr-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="fitness-bmr-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="fitness-bmr-height" style="color: black;">Height (cm)</label>
+          <input type="number" id="fitness-bmr-height" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="fitness-bmr-age" style="color: black;">Age (years)</label>
+          <input type="number" id="fitness-bmr-age" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-fitness-bmr"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Ideal body weight</h3>
+        <p>Devine formula, from height alone.</p>
+      </div>
+      <form class="calc-form" id="form-fitness-ibw">
+        <div class="field">
+          <label for="fitness-ibw-gender" style="color: black;">Gender</label>
+          <select id="fitness-ibw-gender">
+            <option value="male" style="color: black;">Male</option>
+            <option value="female" style="color: black;">Female</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fitness-ibw-height" style="color: black;">Height (cm)</label>
+          <input type="number" id="fitness-ibw-height" min="1" step="0.1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-fitness-ibw"></div>
+    </div>
+
+    <div class="tool-row">
+      <div class="tool-info">
+        <h3>Calorie burn</h3>
+        <p>Estimated calories burned for an activity and duration.</p>
+      </div>
+      <form class="calc-form" id="form-fitness-cal">
+        <div class="field">
+          <label for="fitness-cal-activity" style="color: black;">Activity</label>
+          <select id="fitness-cal-activity">
+            <option value="3.8">Walking</option>
+            <option value="9.8">Running</option>
+            <option value="7.5">Cycling</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fitness-cal-weight" style="color: black;">Weight (kg)</label>
+          <input type="number" id="fitness-cal-weight" min="1" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="fitness-cal-duration" style="color: black;">Duration (min)</label>
+          <input type="number" id="fitness-cal-duration" min="1" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-accent">Calculate</button>
+      </form>
+      <div class="result" id="result-fitness-cal"></div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+</footer>
+
+<script src="logic.js"></script>
+</body>
+</html>
